@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.joystick{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    transition: .3s;
+    
+}
+.joystick:hover{
+    transform: scale(1.1);
+}
+
+.nav{
+    background-color: rgb(54, 125, 207);
+    display: flex;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+    
+
+}
+
+.nav__item,
+.bx{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.8rem;
+    color: #222;
+    
+}
+
+
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+   
+    margin: 0 auto;
+}
+.container__box{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.videogames{
+    width: 250px;
+    min-height: 321px;
+    padding: 0 10px;
+    border-radius: 35px;
+}
+
+button{
+    color: rgb(36, 34, 34);
+    box-shadow: beige;
+    border-radius: 6px ;
+    height: 2.3rem;
+    transition: .4s;
+    
+}
+button:hover{
+    background-color: rgb(46, 79, 151);
+    color: #eee;
+    cursor: pointer;
+}
+
+
+.container1{
+    background-color: rgb(54, 125, 207);
+    display: flex;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.js__button{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
