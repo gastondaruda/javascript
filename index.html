@@ -8,7 +8,7 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="jquery-3.2.1.js"></script>
     
-    <title>Document</title>
+    <title>Javascript</title>
 </head>
 <body>
 
@@ -27,144 +27,45 @@
     <div class="genero">
         <ul class="genero__items"> 
             <li class="genero__item" category="all"><button>Todos</button></li>
-            <li class="genero__item" category="acción"><button onclick="accion()">Acción</button></li>
-            <li class="genero__item" category="deporte"><button onclick="deporte()">Deporte</button></li>
-            <li class="genero__item" category="autos"><button onclick="autos()">Autos</button></li>
-            <li class="genero__item" category="survival horror"><button onclick="survival()">Survival Horror</button></li>
+            <li class="genero__item" category="acción"><button>Acción</button></li>
+            <li class="genero__item" category="deporte"><button>Deporte</button></li>
+            <li class="genero__item" category="autos"><button>Autos</button></li>
+            <li class="genero__item" category="survival"><button>Survival Horror</button></li>
         </ul>
     </div>
     
     
-<div class="container">
-    
-    <div class="container__box" category="survival horror">
-        <img class="videogames" src="imagenes/re.jpg" alt="">
-        <button id="re">
-            Comprar
-        </button>
-        <button value="Resident Evil 4" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-        
-    </div>
-
-    <div class="container__box" category="acción">
-        <img class="videogames" src="imagenes/gow.png" alt="">
-        <button id="gow">
-            Comprar
-        </button>
-        <button  value="God of War" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-        
-    </div>
-
-    <div class="container__box" category="acción">
-        <img class="videogames" src="imagenes/uncharted.jpg" alt="">
-        <button id="uncharted">
-            Comprar
-        </button>
-        <button  value="Uncharted 4" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-    </div>
-
-    <div class="container__box" category="survival horror">
-        <img class="videogames" src="imagenes/re3.jpg" alt="">
-        <button id="re3">
-            Comprar
-        </button>
-        <button  value="Resident Evil 3" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-    </div>
-
-    <div class="container__box" category="acción">
-        <img class="videogames" src="imagenes/mgs.jpg" alt="">
-        <button id="mgs">
-            Comprar
-        </button>
-        <button  value="Metal Gear Solid" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-    </div>
-
-    
-    <div class="container__box" category="deporte">
-        <img class="videogames" src="imagenes/pes2020.jpg" alt="">
-        <button id="pes">
-            Comprar
-        </button>
-        <button  value="Pes" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-    </div>
-
-    
-    <div class="container__box" category="deporte">
-        <img class="videogames" src="imagenes/fifa2022.jpg" alt="">
-        <button id="fifa">
-            Comprar
-        </button>
-        <button  value="Fifa" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-    </div>
-
-    <div class="container__box" category="acción">
-        <img class="videogames" src="imagenes/dbz.jpg" alt="">
-        <button id="dbz">
-            Comprar
-        </button>
-        <button  value="Dragon Ball Z" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-    </div>
-
-
-    <div class="container__box" category="autos">
-        <img class="videogames" src="imagenes/nfs.jpg" alt="">
-        <button id="nfs">
-            Comprar
-        </button>
-        <button  value="Need for Speed" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-    </div>
-
-    <div class="container__box" category="survival horror">
-        <img class="videogames" src="imagenes/Outlast.jpg" alt="">
-        <button id="outlast">
-            Comprar
-        </button>
-        <button  value="Outlast" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-    </div>
-
-    <div class="container__box" category="autos">
-        <img class="videogames" src="imagenes/forza.jpg" alt="">
-        <button id="forza">
-            Comprar
-        </button>
-        <button  value="Forza Horizon" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-        
-    </div>
-
-    <div class="container__box" category="acción">
-        <img class="videogames" src="imagenes/horizon.jpg" alt="">
-        <button id="hzd">
-            Comprar
-        </button>
-        <button  value="Horizon Hero Dawn" class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
-        
-    </div>
+<div id="container">
 
 </div>
 
+
 <div class="form">
-    <div class="form__container">
-        <h2>Lista de deseados</h2>
-    </div>
-
     
-    <!--
-    <div class="form__element">
-        <button value="God of war" id="elesdsmento">
-            
-            
-            
-            <button onclick="listaDeDeseados()">Agregar</button>
-            <button onclick="borrarElemento()">Borrar</button>
-        </div>
-    -->
+    <h2 class="form__container">Lista de deseados</h2>
 
-    <div class="li__container">
-        <ul id="lista" class="li__items">
-            
-        </ul>
+
+<div class="li__container">
+    <ul id="lista" class="li__items">
+        
+    </ul>
+</div>
+
+</div>
+
+
+
+<div id="comentarios" class="comentaries">
+    <h3 class="comentaries__tittle">Dejanos tu comentario</h3>
+    <div class="conentaries__sub">
+        <input type="text" id="elemento" class="comentaries__input">
+        <button id="addComentario">Agregar</button>
     </div>
+    <div id="comentario__section" class="comentaries__section__p">
 
+
+
+    </div>
 </div>
 
 

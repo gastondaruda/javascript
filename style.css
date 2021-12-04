@@ -37,6 +37,7 @@
 
 
 
+
 .genero{
     display: flex;
     
@@ -56,10 +57,7 @@
     width: 3rem;
 
 }
-
-
-
-.container{
+#container{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -101,25 +99,12 @@ button:hover{
 }
 
 
-.container1{
-    background-color: rgb(54, 125, 207);
-    display: flex;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+.bx-plus-circle,
+.bx-arrow-back{
+    font-size: 2rem;
 }
 
-
-.js__button{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.btn-active{
-    background-color: #2D3E50;
-}
 
 
 .form{
@@ -168,3 +153,53 @@ button:hover{
     text-align: center;
 }
 
+
+.comentaries{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    margin-bottom: 20px;
+    background-color: rgb(0,67,156);
+} 
+
+.comentaries__tittle{
+    color: #eee;;
+    font-size: 2.2rem;
+}
+
+.conentaries__sub{
+    flex-direction: row;
+    width: 75%;
+}
+
+.comentaries__input{
+    height: 4rem;
+    border-radius: 10px;
+    width: 100%;
+    
+    background-color: #eee;
+}
+
+
+.comentarios__section{
+    display: flex;
+    font-style: italic;
+    font-size: 3rem;
+    border-radius: 10px;
+}
+
+.comentarios__section__2{
+    margin: 1.2rem;
+    color: #eee;
+}
+
+
+.comentaries__section__p{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}

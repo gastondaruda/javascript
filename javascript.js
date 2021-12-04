@@ -1,128 +1,144 @@
 
 
-
 let juegos = [
     
-    {nombre:"God Of War" , genero: "Acción"},
-    {nombre:"Need for Speed Payback" , genero: "Autos"},
-    {nombre:"Outlast" , genero: "Survival Horror"},
-    {nombre:"Resident Evil4" , genero: "Survival Horror"},
-    {nombre:"Resident Evil 3", genero: "Survival Horror"},
-    {nombre:"Forza Horizon 4" , genero: "Autos"},
-    {nombre: "Horizon Zero Dawn", genero: "Ación"},
-    {nombre:"Uncharted 4" , genero: "Acción"},
-    {nombre: "Metal Gear Solid V", genero:"Acción"},
-    {nombre: "Dragon Ball Fighters Z", genero:"Acción"},
-    {nombre:"Fifa" , genero: "Deporte"},
-    {nombre:"Pes" , genero: "Deporte"},
-    {nombre:"Guitar Hero 5" , genero: "Música"}
-]
+    {id:"1",nombre:"God Of War" , price: 1500 ,genero: "acción", img: "imagenes/gow.png"},
+    {id:"2",nombre:"Need for Speed Payback", price: 1200, genero: "autos", img:"imagenes/nfs.jpg"},
+    {id:"3",nombre:"Outlast" , price: 800 , genero: "survival", img:"imagenes/Outlast.jpg"},
+    {id:"4",nombre:"Resident Evil4" , price: 850 , genero: "survival", img:"imagenes/re.jpg"},    
+    {id:"5",nombre:"Resident Evil 3", price: 1500, genero: "survival", img:"imagenes/re3.jpg"},
+    {id:"6",nombre:"Forza Horizon 4" , price: 1850, genero: "autos", img:"imagenes/forza.jpg"},
+    {id:"7",nombre: "Horizon Zero Dawn", price: 1650, genero: "ación", img:"imagenes/horizon.jpg"},
+    {id:"8",nombre:"Uncharted 4" , price: 1000, genero: "acción", img:"imagenes/uncharted.jpg"},
+    {id:"9",nombre: "Metal Gear Solid V", price: 950, genero:"acción", img:"imagenes/mgs.jpg"},
+    {id:"10",nombre: "DragonBall Fighters Z", price: 750, genero:"acción", img:"imagenes/dbz.jpg"},
+    {id:"11",nombre:"Fifa" , price: 2100, genero: "deporte", img:"imagenes/fifa2022.jpg"},
+    {id:"12",nombre:"Pes" , price: 2000 , genero: "deporte", img:"imagenes/pes2020.jpg"}
 
-
-let JuegosDeACcion = juegos.filter(function(juegos){
-    return juegos.genero === "Acción";
-});
-
-let JuegosDeSurvival = juegos.filter(function(juegos){
-    return juegos.genero === "Survival Horror";
-});
-
-let JuegosDeAutos = juegos.filter(function(juegos){
-    return juegos.genero === "Autos";
-});
-
-let JuegosDeDeporte = juegos.filter(function(juegos){
-    return juegos.genero === "Deporte";
-});
-
-function accion(){
-    console.log(JuegosDeACcion);
-}
-function deporte(){
-    console.log(JuegosDeDeporte);
-}
-
-function autos(){
-    console.log(JuegosDeAutos);
-}
-
-function survival(){
-    console.log(JuegosDeSurvival);
-}
-
-$(document).ready(function(){
-    //AGREGANDO CLASE ACTIVE AL PRIMER ENLACE
-    $('.genero__items .genero__item[category="all"]').addClass('btn-active');
-
-    //-----------------------------------
-
-    $('.genero__item').click(function(){
-        let catProduct = $(this).attr('category');
-
-        //ocultando productos
-        $('.container__box').hide();
-
-        //------
-
-        $('.container__box[category="'+catProduct+'"]').show();
-
-
-    });
-
-    $('.genero__item[category="all"]').click(function(){
-        $('.container__box').show();
-    })
-
-
-});
+];
 
 
 
-// --------------lista de deseados
+
+
+//-------------------------PLANTILLAS E INNERHTML CON ONJETOS/ARRAYS----------
+const container = document.getElementById("container");
+
+
+
+for (let juego of juegos) {    
+const contenedor = document.createElement("div");    
+contenedor.innerHTML = `
+            <div class="container__box" category="${juego.genero}">
+                <img class="videogames" src="${juego.img}" alt="">
+                <h3> ${juego.nombre}</h3>
+                <h3> $${juego.price}</h3>
+                <button>
+                    Comprar
+                </button>
+                <button value=${juego.nombre} class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
+            </div>`
+        
+            container.appendChild(contenedor);
+        
+    }
+    
+
+
+//---------------------------
 
 
 let valor =  document.getElementsByClassName("elemento");
 function listaDeDeseados(valor){
 
-    
-    let lista = document.getElementById("lista");
 
-    
-    let nuevoLi = document.createElement("li");
+let lista = document.getElementById("lista");
 
-    nuevoLi.innerHTML = valor;
-    
-    lista.appendChild( nuevoLi);
-   
-    
-    
+
+let nuevoLi = document.createElement("li");
+
+nuevoLi.innerHTML = valor;
+
+lista.appendChild( nuevoLi);
+
+
+
 
 }
 
+//---------------------
+
+
+$(document).ready(function(){
+//AGREGANDO CLASE ACTIVE AL PRIMER ENLACE
+
+//-----------------------------------
+
+$('.genero__item').click(function(){
+let catProduct = $(this).attr('category');
+
+//ocultando productos
+$('.container__box').hide();
+
+//------mostrando por categoria
+
+$('.container__box[category="'+catProduct+'"]').show();
+
+
+});
+
+$('.genero__item[category="all"]').click(function(){
+$('.container__box').show();
+})
+
+
+});
+
+
+
+//---------------------------comentarios----------------
 
 /*
-function listaCompras(){
+function agregarComentario(){
 
-    let valor =  document.getElementById("elemento");
-    let lista = document.getElementById("lista");
+let input = document.getElementById("elemento");
+let comentarios = document.getElementById("comentario__section")
 
-    
-    let nuevoLi = document.createElement("li");
+let nuevoComment = document.createElement("p");
 
-    nuevoLi.innerHTML = `${valor.value}`;
-    
-    lista.appendChild( nuevoLi);
+nuevoComment.innerHTML = `
+                        <div class="comentarios__section">
+                            <p class="comentarios__section__2">
 
-}
+                            </p>
+                        
+                        </div>`
+                        
+                        comentarios.appendChild(input);
+
+
+
+                    }
 */
 
+addComentario.addEventListener("click", agregarComentario)
+
+function agregarComentario(){
+
+let input =  document.getElementById("elemento");
+
+let comentarios = document.getElementById("comentario__section");
 
 
+let nuevoComentario = document.createElement("p");
+
+nuevoComentario.innerHTML = `<div class="comentarios__section">
+                            <p class="comentarios__section__2">
+                            "${input.value}"
+                            </p>
+                            </div>`;
 
 
-function borrarElemento(){
-
-    let lista = document.getElementById("lista");
-    lista.removeChild(lista.lastChild);
+comentarios.appendChild( nuevoComentario);
 
 }
