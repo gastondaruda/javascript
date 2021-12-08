@@ -64,10 +64,10 @@ function listaDeDeseados(valor){
     lista.appendChild( nuevoLi);
 
 
-    
-    let JSONli = JSON.stringify(valor);
-    sessionStorage.setItem("id" , JSONli);
-
+    for ( let i = 0; i < sessionStorage.length ; i++) {
+        let JSONli = JSON.stringify(valor);
+        sessionStorage.setItem("id" , JSONli);
+    };
 
 }
 //---------------------
@@ -140,7 +140,7 @@ let nuevoComentario = document.createElement("p");
 
 
 nuevoComentario.innerHTML = `
-                            <p id="ComentarioValor" class="comentarios__section__2">
+                            <p class="comentarios__section__2">
                             "${input.value}"
                             </p>
                             `;
@@ -179,8 +179,3 @@ for( let i = 0; i < 3 ; i++) {
 
 }
 */
-
-
-let gasty = "gassssty"
-
-sessionStorage.setItem("usuario" , gasty)
