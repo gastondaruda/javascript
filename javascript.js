@@ -21,6 +21,9 @@ let juegos = [
 
 
 
+
+
+
 //-------------------------PLANTILLAS E INNERHTML CON ONJETOS/ARRAYS----------
 const container = document.getElementById("container");
 
@@ -49,23 +52,24 @@ contenedor.innerHTML = `
 
 
 let valor =  document.getElementsByClassName("elemento");
+
 function listaDeDeseados(valor){
 
 
-let lista = document.getElementById("lista");
+    let lista = document.getElementById("lista");
+    let nuevoLi = document.createElement("li");
+
+    nuevoLi.innerHTML = valor;
+
+    lista.appendChild( nuevoLi);
 
 
-let nuevoLi = document.createElement("li");
-
-nuevoLi.innerHTML = valor;
-
-lista.appendChild( nuevoLi);
-
-
+    
+    let JSONli = JSON.stringify(valor);
+    sessionStorage.setItem("id" , JSONli);
 
 
 }
-
 //---------------------
 
 
@@ -132,13 +136,51 @@ let comentarios = document.getElementById("comentario__section");
 
 let nuevoComentario = document.createElement("p");
 
-nuevoComentario.innerHTML = `<div class="comentarios__section">
-                            <p class="comentarios__section__2">
+//let JSONNewC = JSON.stringify(nuevoComentario);
+
+
+nuevoComentario.innerHTML = `
+                            <p id="ComentarioValor" class="comentarios__section__2">
                             "${input.value}"
                             </p>
-                            </div>`;
+                            `;
 
 
 comentarios.appendChild( nuevoComentario);
 
+//sessionStorage.setItem("valor" , "hola")
+/*
+for( let i = 0; i < 3 ; i++) {
+    
+    sessionStorage.setItem(i , JSON.stringify(nuevoComentario));
+
 }
+*/
+}
+
+
+/*
+for ( let i = 0 ; i < localStorage.length ; i++) {
+    
+
+    
+    localStorage.setItem( i , valor);
+}
+*/
+
+
+//--------------------
+
+
+/*
+for( let i = 0; i < 3 ; i++) {
+    
+    localStorage.setItem(i , JSON.stringify(nuevoLi));
+
+}
+*/
+
+
+let gasty = "gassssty"
+
+sessionStorage.setItem("usuario" , gasty)

@@ -184,15 +184,16 @@ button:hover{
 
 
 .comentarios__section{
-    display: flex;
-    font-style: italic;
-    font-size: 3rem;
     border-radius: 10px;
 }
 
 .comentarios__section__2{
+    font-style: italic;
+    display: flex;
+    font-size: 3rem;
     margin: 1.2rem;
     color: #eee;
+    border-bottom: 2px solid beige;
 }
 
 
