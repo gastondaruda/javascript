@@ -1,5 +1,6 @@
 
 
+
 let juegos = [
     
     {id:"1",nombre:"God Of War" , price: 1500 ,genero: "acción", img: "imagenes/gow.png"},
@@ -24,6 +25,7 @@ let juegos = [
 
 
 
+
 //-------------------------PLANTILLAS E INNERHTML CON ONJETOS/ARRAYS----------
 const container = document.getElementById("container");
 
@@ -33,20 +35,91 @@ for (let juego of juegos) {
 const contenedor = document.createElement("div");    
 contenedor.innerHTML = `
             <div class="container__box" category="${juego.genero}">
-                <img class="videogames" src="${juego.img}" alt="">
-                <h3> ${juego.nombre}</h3>
-                <h3> $${juego.price}</h3>
-                <button>
+                <img class="videogames item-img" src="${juego.img}" alt="">
+                <h3 class="item-title"> ${juego.nombre}</h3>
+                <h3 class="item-price"> $${juego.price}</h3>
+                <button class="addToCart">
                     Comprar
                 </button>
-                <button value=${juego.nombre} class="elemento" onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
+                <button value=${juego.nombre} class="elemento " onclick="listaDeDeseados(value)"><i class='bx bx-plus-circle'></i></button>
             </div>`
         
             container.appendChild(contenedor);
         
+
+            
     }
     
 
+
+    
+//--------------------CARRITO--DE--COMPRAS--------------------
+
+let addToShopCart = document.querySelectorAll('.addToCart');
+addToShopCart.forEach((addToCartButton) => {
+    addToCartButton.addEventListener('click', addToCartClicked);
+});
+
+/*
+const addToShoppingCartButtons = document.querySelectorAll('.addToCart');
+addToShoppingCartButtons.forEach((addToCartButton) => {
+  addToCartButton.addEventListener('click', addToCartClicked);
+});
+*/
+
+function addToCartClicked(e) {
+    let button = e.target;
+    let item = button.closest('.container__box');
+    
+    
+    let itemTitle = item.querySelector('.item-title').textContent;
+    let itemImg = item.querySelector('.item-img').src
+    let itemPrice = item.querySelector('.item-price').textContent;
+
+    addItemToShoppingCart(itemTitle, itemPrice, itemImg)
+
+  
+}
+let ShopCartContainer = document.querySelector('.shopping-cart')
+
+function addItemToShoppingCart(itemTitle, itemPrice, itemImg) {
+   let shopCartRow = document.createElement('div');
+   
+   shopCartRow.innerHTML = `
+                            <div class="shoppingCartItem">
+                                        
+                            <div class="shopping-cart-item">
+                                <img src=${itemImg} class="shopping-cart-image">
+                            </div>
+                            <div class="shopping-cart-tittle">
+                                <h6 class="shopping-cart-item-title">${itemTitle}</h6>
+                            </div>
+
+                            <div class="shopping-cart-price">
+                                <p class="item-price shoppingCartItemPrice">${itemPrice}</p>
+                            </div>
+
+
+
+                            <div class="shopping-cart-quantity">
+                                <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
+                                    value="1">
+                                <button class="btn btn-danger buttonDelete" type="button">X</button>
+                            </div>
+
+                            </div>`;
+
+   
+   ShopCartContainer.append(shopCartRow);
+
+   shopCartRow.querySelector('.buttonDelete').addEventListener('click' , removeShopCartItem);
+
+
+
+   updatePrecioTotal();
+}
+
+//-----------------------------------
 
 //---------------------------
 
@@ -100,31 +173,46 @@ $('.container__box').show();
 
 
 
-//---------------------------comentarios----------------
+//---------------------------CARRITO DE COMPRAS----------------
 
-/*
-function agregarComentario(){
+function updatePrecioTotal() {
+    let total = 0;
+    const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
+  
+    const shoppingCartItems = document.querySelectorAll('.shoppingCartItem');
+  
+    shoppingCartItems.forEach((shoppingCartItem) => {
+      const shoppingCartItemPriceElement = shoppingCartItem.querySelector(
+        '.shoppingCartItemPrice'
+      );
+      const shoppingCartItemPrice = parseInt(
+        shoppingCartItemPriceElement.textContent.replace('$', '')
+      );
+      
+      
+      total = total + shoppingCartItemPrice
+    });
+    shoppingCartTotal.innerHTML = `$${total.toFixed(2)}`;
+  }
 
-let input = document.getElementById("elemento");
-let comentarios = document.getElementById("comentario__section")
-
-let nuevoComment = document.createElement("p");
-
-nuevoComment.innerHTML = `
-                        <div class="comentarios__section">
-                            <p class="comentarios__section__2">
-
-                            </p>
-                        
-                        </div>`
-                        
-                        comentarios.appendChild(input);
 
 
+  
 
-                    }
-*/
 
+//--------------------------------
+
+
+function removeShopCartItem(e){
+    let buttonClicked = e.target;
+    buttonClicked.closest('.shoppingCartItem').remove();
+    
+}
+
+
+
+
+//--------------------AGREGAR-COMENTARIOS--------------------
 addComentario.addEventListener("click", agregarComentario)
 
 function agregarComentario(){
@@ -179,3 +267,5 @@ for( let i = 0; i < 3 ; i++) {
 
 }
 */
+
+

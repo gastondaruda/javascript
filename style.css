@@ -204,3 +204,74 @@ button:hover{
     justify-content: flex-start;
     align-items: center;
 }
+
+/*---------------------*/
+.shop-tittle{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.shopping-cart {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border: 2px solid red;
+    margin: 0 auto;
+}
+
+
+.shoppingCartItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    border: 2px solid green;
+}
+.shopping-cart-item{
+    
+    display: flex;
+    margin: 0 3rem;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid violet;
+}
+.shopping-cart-title{
+    border: 2px solid yellowgreen;
+    margin-right: 2rem;
+}
+.shopping-cart-item-title{
+    font-size: 1.3rem;
+    
+}
+
+.shopping-cart-image {
+    width: 5rem;
+}
+
+.buttonDelete{
+    font-size: 1.2rem;
+    width: 2rem;
+    background-color: red;
+
+}
+.shopping-cart-quantity-input{
+    width: 2rem;
+    margin: 0 1.2rem;
+    margin-right: 2rem;
+}
+
+
+.shopping-cart-item, .shopping-cart-tittle, .shopping-cart-price{
+    border: 2px solid red;
+}
+
+
+.shopping-cart-total{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    border: 2px solid green;
+    justify-content: space-between;
+    align-items: center;
+}
