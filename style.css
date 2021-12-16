@@ -66,6 +66,10 @@
    
     margin: 0 auto;
 }
+.container__shop{
+    display: flex;
+
+}
 .container__box{
     
     display: flex;
@@ -206,6 +210,8 @@ button:hover{
 }
 
 /*---------------------*/
+
+
 .shop-tittle{
     display: flex;
     justify-content: center;
@@ -219,10 +225,9 @@ button:hover{
     margin: 0 auto;
 }
 
-
 .shoppingCartItem{
     display: flex;
-    flex-direction: row;
+    
     justify-content: space-between;
     align-items: center;
     
