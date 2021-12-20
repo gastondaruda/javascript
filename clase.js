@@ -34,18 +34,15 @@ class Producto{
                     <img class="videogames item-img" src="${this.img}" alt="">
                     <h3 class="item-title"> ${this.nombre}</h3>
                     <h3 class="item-price"> $${this.price}</h3>
-                    <button class="addToCart">
-                        Comprar
-                    </button>
                     <button value=${this.id} class="elemento " onclick="comprar(value)">
-                        <i class='bx bx-plus-circle'></i>
+                        Comprar
                     </button>
                 </div>
             </div>`
     }
     shopCard(){
         return `
-            <div class="shoppingCartItem">
+            <div class="shoppingCartItem" id="shopCartItems">
                 <div class="shopping-cart-item">
                     <img src=${this.img} class="shopping-cart-image">
                 </div>
@@ -58,7 +55,7 @@ class Producto{
                 <div class="shopping-cart-quantity">
                     <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
                         value="1">
-                    <button class="btn btn-danger buttonDelete" type="button">X</button>
+                    <button class="btn btn-danger buttonDelete" onclick="deleteItem()" type="button">X</button>
                 </div>
             </div>
             `
@@ -79,12 +76,22 @@ class Tienda{
     addToCart(id){
         this.carrito.push(this.stock.find(producto => producto.id == id));
     }
+    removeToCart(i){
+        this.carrito.splice( i , 1); //¿Cómo hacer para que el método splice elimine el div que quiero???
+    }
     renderTienda(destino){
         document.getElementById(destino).innerHTML = this.stock.map(item => item.productCard()).join("");
     }
     renderCarrito(destino){
         document.getElementById(destino).innerHTML = this.carrito.map(item => item.shopCard()).join("");
     }
+    /*
+    remove(destino){
+        document.getElementsByClassName(destino).innerHTML = this.carrito.map(item => item.shopCard()).pop("");
+    } */
+    //removeProducto(destino){
+        //document.getElementById(destino) = ;
+    //}
 
     }
     
@@ -97,24 +104,77 @@ localGasty.addProductos(juegos);
 localGasty.renderTienda("container");
 
 
-
-//las cosas que se me agregan al carrito
-//carrito.renderShop("shop-container")
-
-
-
-
-
 function comprar(id){
     
     localGasty.addToCart(id);
     console.log(localGasty);
     localGasty.renderCarrito("shop-container");
-    
-    }
+};
 
+
+
+
+
+/*
+    const deleteBtn = document.getElementsByClassName("buttonDelete");
+
+    deleteBtn.addEventListener("click", () => {
+        console.log("clicked")
+        //const item = e.target.parentElement.parentElement; 
+        //const shopContainer = document.getElementById("shop-container");
+
+        //shopContainer.removeChild(item);
+    });
+*/
+
+
+
+function deleteItem(e) {
     
+        localGasty.removeToCart(e);
+        console.log(localGasty);   
+        localGasty.renderCarrito("shop-container");
+}
+
+
+        //localGasty.renderCarrito("shop-container");
+
+        /*
+        splice( i , 1)
+        //--------------
+
+        for( let i=0 ; i<localGasty.lenght ; i++) {
+            if( buttonDelete.this.nombre === this.nombre){
+                removeToCart()
+            }
+        }
+        */
+        
+
+//Se tiene que eliminar el Objeto del array seleccionado (¿¿e.target??)
+
+//----------------------------------------------------------------------
+/*
+
+function deleteItem(id) {
+        localGasty.removeToCart(id)
+        console.log(localGasty);    
+        //localGasty.renderCarrito("shop-container");
+        
+}
+
+
+function deleteItem() {
+    const deleteBtn = document.getElementsByClassName("buttonDelete");
+    const shopCartItems = document.getElementsByClassName("shoppingCartItem");
     
+    deleteBtn.addEventListener("click", (e) => {
+        console.log("clicked");
+    });
+    
+    //console.log("clicked")
+}
+*/
 
 
 
@@ -133,13 +193,13 @@ $(document).ready(function(){
     
     //------mostrando por categoria
     
-    $('.container__box[category="'+catProduct+'"]').show();
+    $('.container__box[category="'+catProduct+'"]').fadeIn();
     
     
     });
     
     $('.genero__item[category="all"]').click(function(){
-    $('.container__box').show();
+    $('.container__box').fadeIn();
     })
     
     
