@@ -42,7 +42,7 @@ class Producto{
     }
     shopCard(){
         return `
-            <div class="shoppingCartItem" id="shopCartItems">
+            <div class="shoppingCartItem" id="${this.id}">
                 <div class="shopping-cart-item">
                     <img src=${this.img} class="shopping-cart-image">
                 </div>
@@ -53,9 +53,10 @@ class Producto{
                     <p class="item-price shoppingCartItemPrice">${this.price}</p>
                 </div>
                 <div class="shopping-cart-quantity">
-                    <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
+        
+                <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
                         value="1">
-                    <button class="btn btn-danger buttonDelete" onclick="deleteItem()" type="button">X</button>
+                    <button class="btn btn-danger buttonDelete" onclick="deleteItem(${this.id})" type="button">X</button>
                 </div>
             </div>
             `
@@ -72,29 +73,37 @@ class Tienda{
     }
     addProductos(productos){
         productos.forEach(producto => this.addProducto(producto));
+
     }
     addToCart(id){
-        this.carrito.push(this.stock.find(producto => producto.id == id));
+        let existe = this.carrito.find(producto => producto.id == id);
+        console.log(existe);
+        if(existe){
+            alert("ya existe");
+        }else{
+            this.carrito.push(this.stock.find(producto => producto.id == id));
+            
+        }
     }
-    removeToCart(i){
-        this.carrito.splice( i , 1); //¿Cómo hacer para que el método splice elimine el div que quiero???
-    }
+    removeToCart(id){
+        this.carrito = this.carrito.filter(producto => producto.id != id);
+        }
     renderTienda(destino){
         document.getElementById(destino).innerHTML = this.stock.map(item => item.productCard()).join("");
     }
     renderCarrito(destino){
         document.getElementById(destino).innerHTML = this.carrito.map(item => item.shopCard()).join("");
     }
-    /*
-    remove(destino){
-        document.getElementsByClassName(destino).innerHTML = this.carrito.map(item => item.shopCard()).pop("");
-    } */
-    //removeProducto(destino){
-        //document.getElementById(destino) = ;
-    //}
-
+    totalCarrito(destino){
+        document.getElementById(destino).innerHTML = this.carrito.push(producto => producto.price);
+        
+        //let totalCarrito = 0;
+        //document.getElementById(destino).innerHTML = this.carrito.map(producto => producto.price);
     }
-    
+}
+//this.carrito.map(producto => producto.price)
+
+//this.carrito.map(producto => producto.price == price);
 
 
 let localGasty = new Tienda();
@@ -109,74 +118,29 @@ function comprar(id){
     localGasty.addToCart(id);
     console.log(localGasty);
     localGasty.renderCarrito("shop-container");
+    carritoTotal();
+    console.log(localGasty);
 };
 
+//----------------------------------------------------------------------
 
-
-
-
-/*
-    const deleteBtn = document.getElementsByClassName("buttonDelete");
-
-    deleteBtn.addEventListener("click", () => {
-        console.log("clicked")
-        //const item = e.target.parentElement.parentElement; 
-        //const shopContainer = document.getElementById("shop-container");
-
-        //shopContainer.removeChild(item);
-    });
-*/
-
-
-
-function deleteItem(e) {
+function deleteItem(id) {
     
-        localGasty.removeToCart(e);
+        localGasty.removeToCart(id);
         console.log(localGasty);   
         localGasty.renderCarrito("shop-container");
 }
 
 
-        //localGasty.renderCarrito("shop-container");
-
-        /*
-        splice( i , 1)
-        //--------------
-
-        for( let i=0 ; i<localGasty.lenght ; i++) {
-            if( buttonDelete.this.nombre === this.nombre){
-                removeToCart()
-            }
-        }
-        */
-        
-
-//Se tiene que eliminar el Objeto del array seleccionado (¿¿e.target??)
-
 //----------------------------------------------------------------------
-/*
+function carritoTotal() {
+    let shopTotal = document.getElementById("shopTotal");
+    localGasty.totalCarrito("shopTotal");
+    console.log(shopTotal);
 
-function deleteItem(id) {
-        localGasty.removeToCart(id)
-        console.log(localGasty);    
-        //localGasty.renderCarrito("shop-container");
-        
+    // let total = juegos.price
 }
-
-
-function deleteItem() {
-    const deleteBtn = document.getElementsByClassName("buttonDelete");
-    const shopCartItems = document.getElementsByClassName("shoppingCartItem");
-    
-    deleteBtn.addEventListener("click", (e) => {
-        console.log("clicked");
-    });
-    
-    //console.log("clicked")
-}
-*/
-
-
+//agregar un div dinámico para que cuando se agregue un producto, se agregue el "total comprar" PENDIENTE
 
 //----------------------------------------------------------------------
 
