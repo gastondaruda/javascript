@@ -16,6 +16,9 @@ let juegos = [
 ];
 
 
+
+
+
 const saveLocal = (clave, valor) => localStorage.setItem(clave, JSON.stringify(valor)); 
 const readLocal = (clave) => JSON.parse(localStorage.getItem(clave));
 
@@ -23,7 +26,7 @@ class Producto{
     constructor({id,nombre , price ,genero, img}){
         this.id = id;
         this.nombre = nombre;
-        this.price = price;
+        this.price = parseInt(price);
         this.genero = genero;
         this.img = img;
     }
@@ -94,12 +97,12 @@ class Tienda{
     renderCarrito(destino){
         document.getElementById(destino).innerHTML = this.carrito.map(item => item.shopCard()).join("");
     }
-    totalCarrito(destino){
-        document.getElementById(destino).innerHTML = this.carrito.push(producto => producto.price);
+    //totalCarrito(destino){
+        //document.getElementById(destino).innerHTML = this.carrito.push(producto => producto.price);
         
         //let totalCarrito = 0;
         //document.getElementById(destino).innerHTML = this.carrito.map(producto => producto.price);
-    }
+    //}
 }
 //this.carrito.map(producto => producto.price)
 
@@ -118,8 +121,8 @@ function comprar(id){
     localGasty.addToCart(id);
     console.log(localGasty);
     localGasty.renderCarrito("shop-container");
-    carritoTotal();
-    console.log(localGasty);
+    updatePrecioTotal();
+    
 };
 
 //----------------------------------------------------------------------
@@ -129,17 +132,32 @@ function deleteItem(id) {
         localGasty.removeToCart(id);
         console.log(localGasty);   
         localGasty.renderCarrito("shop-container");
+        updatePrecioTotal();
 }
 
 
 //----------------------------------------------------------------------
-function carritoTotal() {
-    let shopTotal = document.getElementById("shopTotal");
-    localGasty.totalCarrito("shopTotal");
-    console.log(shopTotal);
 
-    // let total = juegos.price
-}
+function updatePrecioTotal() {
+    let total = 0;
+    const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
+  
+    const shoppingCartItems = document.querySelectorAll('.shoppingCartItem');
+  
+    shoppingCartItems.forEach((shoppingCartItem) => {
+      const shoppingCartItemPriceElement = shoppingCartItem.querySelector(
+        '.shoppingCartItemPrice'
+      );
+      const shoppingCartItemPrice = parseInt(
+        shoppingCartItemPriceElement.textContent.replace('$', '')
+      );
+      
+      
+      total = total + shoppingCartItemPrice
+    });
+    shoppingCartTotal.innerHTML = `$${total.toFixed(2)}`;
+  }
+
 //agregar un div dinámico para que cuando se agregue un producto, se agregue el "total comprar" PENDIENTE
 
 //----------------------------------------------------------------------
