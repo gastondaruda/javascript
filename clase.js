@@ -188,10 +188,71 @@ $(document).ready(function(){
     });
     
     
+//--------------------
+
+
+let ubicacion = navigator.geolocation.getCurrentPosition( mostrarUbicacion )
+
+
+
+function mostrarUbicacion( position ){
+    console.log( position.coords.latitude );
+    console.log( position.coords.longitude );
+}
+
+
+$("#botonGps").on("click" , mostrarUbicacion);
+
+//---------------------clima
+
+let urlClima = "http://api.openweathermap.org/data/2.5/weather?q=London&appid={fcfaf0816fc485a804d81b25c453cf5b}";
+
+
+$("#botonClima").click(function(){
+    
+    $.get( urlClima , function( respuesta ){
+
+        console.log(respuesta);
+
+        let contenido = `<div>
+                            <h2>${respuesta.name}</h2>
+                            <p>Temp max: ${respuesta.main.temp_max}</p>
+                            <p>Temp min: ${respuesta.main.temp_min}</p>        
+                        </div>`  
+                        
+                        
+    $("#pi").append(contenido);
+
+    })
+
+
+})
 
 
 
 
+/*
+let climaAjax = $.ajax({
+    
+    url: "http://api.openweathermap.org/data/2.5/weather",
+    type: "GET",
+    data:{
+        q:'Buenos Aires',
+        appid: "fcfaf0816fc485a804d81b25c453cf5b",
+        dataType: "jsonp",
+        units:"metric"
+    };
 
+    success: function(data){
+
+        console.log(data);
+    }
+
+
+})
+
+
+console.log(climAjax);
+*/
 
 
