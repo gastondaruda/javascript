@@ -280,3 +280,38 @@ button:hover{
     justify-content: space-between;
     align-items: center;
 }
+
+
+/* --------------------------------*/
+.api{
+    justify-content: center;
+    text-align: center;
+}
+
+.contenedor-juegos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 3rem auto;
+}
+
+
+.contenedor__games{
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #eee;
+    max-width: 23rem;
+    margin-top: 1rem;
+}
+
+.games__img{
+    width: 15rem;
+    max-width: 15rem;
+}
+.games__title{
+    font-size: .9rem;
+}
