@@ -16,6 +16,31 @@ let juegos = [
 ];
 
 
+/*
+let searchBtn = document.getElementById("searchBtn");
+
+searchBtn.addEventListener("click" , searchItem(){
+    let juegoSearch = document.getElementById("searchG").value;
+    console.log(juegoSearch);
+});
+*/
+
+function searchItem(){
+    let juegoSearch = document.getElementById("searchG").value;
+
+    let juegoFilter = juegos.filter( function(juego){
+        return juego.nombre == juegoSearch;
+    })
+    //document.getElementById("container").innerHTML.appendChild(juegoFilter);
+    
+    console.log(juegoFilter);
+}
+
+
+
+
+
+
 
 
 
@@ -64,6 +89,11 @@ class Producto{
             </div>
             `
     }
+    cartIcon(){
+        return `
+                <h6 class="cart-icon">1</h6>
+                `
+    }
 }
 
 class Tienda{
@@ -81,8 +111,9 @@ class Tienda{
     addToCart(id){
         let existe = this.carrito.find(producto => producto.id == id);
         console.log(existe);
+
         if(existe){
-            alert("ya existe");
+            alert("Ya existe");
         }else{
             this.carrito.push(this.stock.find(producto => producto.id == id));
             
@@ -97,16 +128,10 @@ class Tienda{
     renderCarrito(destino){
         document.getElementById(destino).innerHTML = this.carrito.map(item => item.shopCard()).join("");
     }
-    //totalCarrito(destino){
-        //document.getElementById(destino).innerHTML = this.carrito.push(producto => producto.price);
-        
-        //let totalCarrito = 0;
-        //document.getElementById(destino).innerHTML = this.carrito.map(producto => producto.price);
-    //}
-}
-//this.carrito.map(producto => producto.price)
+    //quantityChange()
+    
+};
 
-//this.carrito.map(producto => producto.price == price);
 
 
 let localGasty = new Tienda();
@@ -122,6 +147,7 @@ function comprar(id){
     console.log(localGasty);
     localGasty.renderCarrito("shop-container");
     updatePrecioTotal();
+    
     
 };
 
@@ -190,7 +216,7 @@ $(document).ready(function(){
     
 //--------------------
 
-
+/*
 let ubicacion = navigator.geolocation.getCurrentPosition( mostrarUbicacion )
 
 
@@ -230,7 +256,7 @@ $("#botonClima").click(function(){
 
 
 
-
+*/
 /*
 let climaAjax = $.ajax({
     
@@ -255,4 +281,59 @@ let climaAjax = $.ajax({
 console.log(climAjax);
 */
 
+//---------------MERCADOPAGO--------------------
 
+/*
+const mp = new MercadoPago('TEST-73d0f270-29c7-400d-98d7-7b76760aac3c');
+
+// SDK de Mercado Pago
+const mercadopago = require ('mercadopago');
+// Agrega credenciales
+mercadopago.configure({
+access_token: 'TEST-7005293342374995-010823-48236f5b113b450b8e0581c580060f40-393185361'
+});
+*/
+
+// Crea un objeto de preferencia
+let preference = {
+    items: [
+        {
+        title: 'Mi producto',
+        unit_price: 100,
+        quantity: 1,
+        }
+    ]
+};
+
+mercadopago.preferences.create(preference)
+.then(function(response){
+  // Este valor reemplazará el string "<%= global.id %>" en tu HTML
+    global.id = response.body.id;
+}).catch(function(error){
+    console.log(error);
+});
+
+
+const mp = new MercadoPago('TEST-73d0f270-29c7-400d-98d7-7b76760aac3c', {
+    locale: 'es-AR'
+});
+
+// Inicializa el checkout
+mp.checkout({
+  preference: {
+      id: 'prueba Javascript'
+  },
+  render: {
+        container: '.comprarButton', // Indica el nombre de la clase donde se mostrará el botón de pago
+        label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+  }
+});
+
+
+/*
+curl -X POST \
+-H "Content-Type: application/json" \
+-H 'Authorization: Bearer TEST-7005293342374995-010823-48236f5b113b450b8e0581c580060f40-393185361' \
+"https://api.mercadopago.com/users/test_user" \
+-d '{"site_id":"MLA"}'
+*/

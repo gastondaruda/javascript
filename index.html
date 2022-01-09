@@ -14,14 +14,18 @@
 </head>
 <body>
 
-
+<!--
     <header>
         <img class="joystick" src="imagenes/joystick.png" alt="">
     </header>
-    
+-->
 
     <nav class="nav">
-        <i class='bx bx-cart'></i>   
+        <div class="cart-div">
+            <i class='bx bx-cart' id="cart">
+                <input type="number" class="cart-icon"></input>
+            </i>
+        </div>
         <h3 class="nav__item">Nuestros juegos</h3>
         <i class='bx bx-store-alt' ></i>
     </nav>
@@ -36,6 +40,10 @@
         </ul>
     </div>
     
+<div class="search">
+    <input type="seach" name="" id="searchG" placeholder="¿Qué juego buscas?">
+    <button id="searchBtn" onclick="searchItem()">Buscar</button>
+</div>
     
 <div id="container">
 
@@ -82,6 +90,7 @@
 
     
     <script src="clase.js"></script>
-    <script src="games.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    
 </body>
 </html>

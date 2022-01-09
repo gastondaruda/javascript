@@ -34,6 +34,31 @@
     
 }
 
+.cart-div{
+    display: flex;
+}
+
+#cart{
+    display: flex;
+    
+}
+
+.cart-icon{
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 3rem;
+    width: 2rem;
+    
+    color: #eee;
+    -webkit-appearance: none;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
 
 
