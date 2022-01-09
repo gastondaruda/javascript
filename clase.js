@@ -29,11 +29,11 @@ function searchItem(){
     let juegoSearch = document.getElementById("searchG").value;
 
     let juegoFilter = juegos.filter( function(juego){
-        return juego.nombre == juegoSearch;
+        juego.nombre == juegoSearch;
+        console.log(juegoFilter);
     })
     //document.getElementById("container").innerHTML.appendChild(juegoFilter);
     
-    console.log(juegoFilter);
 }
 
 
@@ -59,7 +59,7 @@ class Producto{
         return `
             <div>
                 <div class="container__box" category="${this.genero}">
-                    <img class="videogames item-img" src="${this.img}" alt="">
+                    <img class="videogames" src="${this.img}" alt="">
                     <h3 class="item-title"> ${this.nombre}</h3>
                     <h3 class="item-price"> $${this.price}</h3>
                     <button value=${this.id} class="elemento " onclick="comprar(value)">
@@ -131,6 +131,53 @@ class Tienda{
     //quantityChange()
     
 };
+
+//---------------------------BUSQUEDA-DE-JUEGO-----
+
+
+let search = document.getElementById("search").addEventListener("click" , buscarJuego);
+//let deleteSearch = document.getElementById("deleteSearch").addEventListener("click" , borrarDiv);
+
+
+function buscarJuego(){
+    let stringSearch = document.getElementById("inputSearch").value;
+    let juegoFilter = juegos.filter(juego => juego.nombre.includes(stringSearch));
+    console.log(juegoFilter);
+    
+    for (const juego of juegoFilter) {
+        const resultSearch = document.getElementById("container");
+        
+        let div = document.createElement("div");
+        //resultSearch.parentNode.removeChild(div);
+        div.innerHTML = `<div class="result"
+        
+        <h3>${juego.nombre}</h3>
+        <img class="videogames" src="${juego.img}">
+    
+                        </div>`;
+        resultSearch.appendChild(div);
+
+    }
+}
+
+/*
+function borrarDiv(resultSearch){
+    const result = document.getElementsByClassName("result");
+    resultSearch.remove(result); NO PUDE HACER QUE SE ELIMINEN TODOS LOS PRODUCTOS SINO DE A UNO ME LOS ELIMINABA
+}
+*/
+
+$('#deleteSearch').click(function(){
+    $('.result').hide();
+});
+
+$('#search').click(function(){
+    $('.container__box').hide();
+})
+
+
+    //-----------------------------------------
+
 
 
 
