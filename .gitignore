@@ -8,3 +8,6 @@
 /api.js
 /.env
 /services.php
+/geolocalizacion.html
+/googleMap.js
+/juegos.json

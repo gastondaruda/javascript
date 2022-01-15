@@ -22,9 +22,10 @@
 
     <nav class="nav">
         <div class="cart-div">
+            <a href="#shop-container">
             <i class='bx bx-cart' id="cart">
-                <input type="number" class="cart-icon"></input>
-            </i>
+                <!--<input type="number" class="cart-icon"></input>-->
+            </i></a>
         </div>
         <h3 class="nav__item">Nuestros juegos</h3>
         <i class='bx bx-store-alt' ></i>
@@ -37,16 +38,27 @@
             <li class="genero__item" category="deporte"><button>Deporte</button></li>
             <li class="genero__item" category="autos"><button>Autos</button></li>
             <li class="genero__item" category="survival"><button>Survival Horror</button></li>
+            <li class="genero__item" category="shooter"><button>Shooter</button></li>
         </ul>
     </div>
 
-    <div>
+    <div class="genero">
+        <ul class="plataforma__items"> 
+            <li class="plataforma__item" category="ps5" id="ps5" ><button>Ps5</button></li>
+            <li class="plataforma__item" category="ps4" id="ps4"><button>Ps4</button></li>
+            <li class="plataforma__item" category="ps3" id="ps3"><button>Ps3</button></li>
+            <li class="plataforma__item" category="ps2" id="ps2"><button>Ps2</button></li>
+            <li class="plataforma__item" category="Xbox" id="xbox"><button>Xbox</button></li>
+        </ul>
+    </div>
+
+    <div class="div__search">
         <input type="text" id="inputSearch" placeholder="¿Qué juego buscas?">
         <button id="search">Buscar</button>
         <button id="deleteSearch">Limpiar</button>
     
         <div id="resultSearch">
-           
+
         </div>
     </div>
 
@@ -69,32 +81,155 @@
 <div class="shopping-cart-total">
     <p class="">Total</p>
     <p class="shoppingCartTotal" id="shopTotal">$0</p>
-    <button class="btn btn-success comprarButton" type="button" >Comprar</button>
+    <button class="btn btn-success comprarButton" type="button" id="comprar"><a href="#pay"> Comprar</a></button>
 </div>
 
-<!--
-<div>
-    <input type="text" id="inputSearch" placeholder="¿Qué juego buscas?">
-    <button id="search">Buscar</button>
-    <button id="deleteSearch">Limpiar</button>
 
-    <div id="resultSearch">
-       
+
+
+<!-----------------CREDIT--CARD--------------------------------------------------------->
+<div class="pay" id="pay">
+    <section class="tarjeta" id="tarjeta">
+        <div class="delantera" id="bancoBg">
+            <div class="bank__logo">
+                <img class="banco-logo" src="imagenes/bbva-logo.png" alt="">
+                <div class="logo-marca" id="logo-marca">
+                    <!--<img src="img/logos/bbva-logo.png" alt=""> --> 
+                </div>
+            </div>
+            <img src="imagenes/logos/chip-tarjeta.png" class="chip" alt="">
+            <div class="datos">
+                <div class="grupo" id="numero">
+                    <p class="label">Número Tarjeta</p>
+                    <p class="numero">#### #### #### ####</p>
+                </div>
+                <div class="flexbox">
+                    <div class="grupo" id="nombre">
+                        <p class="label">Nombre Tarjeta</p>
+                        <p class="nombre">Natalia Natalia</p>
+                    </div>
+
+                    <div class="grupo" id="expiracion">
+                        <p class="label">Expiracion</p>
+                        <p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trasera">
+            <div class="barra-magnetica"></div>
+            <div class="datos">
+                <div class="grupo" id="firma">
+                    <p class="label">Firma</p>
+                    <div class="firma"><p></p></div>
+                </div>
+                <div class="grupo" id="ccv">
+                    <p class="label">CCV</p>
+                    <p class="ccv"></p>
+                </div>
+            </div>
+            <p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem, voluptates illo.</p>
+            <a href="#" class="link-banco">www.tubanco.com</a>
+        </div>
+    </section>
+
+    <div class="contenedor-btn">
+        <button class="btn-abrir-formulario" id="btn-abrir-formulario">
+            <i class="fas fa-plus"></i>
+        </button>
     </div>
+
+    
+    <form action="" id="formulario-tarjeta" class="formulario-tarjeta">
+        <div class="grupo">
+            <label for="inputNumero">Número Tarjeta</label>
+            <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
+        </div>
+        <div class="grupo">
+            <label for="inputNombre">Nombre</label>
+            <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
+        </div>
+        <div class="flexbox">
+            <div class="grupo expira">
+                <label for="selectMes">Expiracion</label>
+                <div class="flexbox">
+                    <div class="grupo-select">
+                        <select name="mes" id="selectMes">
+                            <option disabled selected>Mes</option>
+                        </select>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                    <div class="grupo-select">
+                        <select name="year" id="selectYear">
+                            <option disabled selected>Año</option>
+                        </select>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo ccv">
+                <label for="inputCCV">CCV</label>
+                <input type="text" id="inputCCV" maxlength="3">
+            </div>
+        </div>
+        <button type="submit" class="btn-enviar">Confirmar compra</button>
+    </form>
+    
 </div>
--->
 
 
-<!----------API--FREE--TO--PLAY--GAMES------------>
-<h3 class="api">LISTA DE JUEGOS DE FREE TO PLAY GAMES</h3>
-<div id="container-games" class="contenedor-juegos">
+<div id="weather">
+    <h2 class="weather__api">OpenWeather Api</h2>
+    <div class="input">
+        <input type="text" placeholder="¿Qué ciudad/país buscas?" id="inputValue">
+        <input type="submit" value="Buscar" id="Submit">
+        <input type="submit" value="Limpiar" id="clean">
+      </div>
+    </div>
+  
+    <div class="display">
+        <div class="display_title">
+        <h1 id="name"></h1>
+        <p id="temp"></p>
+        <div id="icon">
+            
+        </div>
+    </div>
+    <div class="description__weather">
+        <p id="desc"></p>
+        <p id="tempMax"></p>
+        <p id="tempMin"></p>
+        <p id="humidity"></p>
+    </div>
+    
+
         
 </div>
 
 
+<!--------FOOTER------->
+
+<div class="footer">
+
+</div>
+
+
+
+
+
+<!---------------------->
+
+
     
     <script src="clase.js"></script>
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="games.js"></script>
+    <script src="googleMap.js"></script>
+    <script src="weatherApi.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    
+
     
 </body>
 </html>
