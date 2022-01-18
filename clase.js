@@ -155,9 +155,19 @@ let search = document.getElementById("search").addEventListener("click" , buscar
 
 
 function buscarJuego(){
+    $('.result').hide(); //al realizar una segunda busqueda me juntaba ambas busquedas. Intente con un ReplaceChild pero se me complico.
     let stringSearch = document.getElementById("inputSearch").value;
     let juegoFilter = juegos.filter(juego => juego.nombre.includes(stringSearch));
     console.log(juegoFilter);
+
+    /*if(div == true){
+        replaceChild( a , b)
+    } else {
+        for ( const juegos of juegosFilter) {
+            renderBusqueda
+        }
+    }
+    */
     
     
     for (const juego of juegoFilter) {
@@ -252,6 +262,7 @@ $(document).ready(function(){
 //--------por plataforma-------------------
 $('#deleteSearch').click(function(){
     $('.result').hide();
+    $('.container__box').fadeIn();
     
 });
 

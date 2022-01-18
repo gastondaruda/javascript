@@ -11,6 +11,7 @@ let icon = document.getElementById("icon");
 
 
 button.addEventListener('click', function(){
+    $('.result').hide();
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid=fcfaf0816fc485a804d81b25c453cf5b')
     
     .then(response => response.json())
@@ -26,19 +27,25 @@ button.addEventListener('click', function(){
         console.log(data)
 
         name.innerHTML = nameValue + ", " + countryName;
-        temp.innerHTML = tempValue.toFixed(2) + " Cº";
-        tempMax.innerHTML = "Temperatura máxima: " + tempMaxValue.toFixed(2) + " Cº";
-        tempMin.innerHTML = "Temperatura mínima: " + tempMinValue.toFixed(2) + " Cº";
-        desc.innerHTML =  descValue;
+        temp.innerHTML = tempValue.toFixed(0) + " Cº";
+        tempMax.innerHTML = "Temperatura máxima: " + tempMaxValue.toFixed(0) + " Cº";
+        tempMin.innerHTML = "Temperatura mínima: " + tempMinValue.toFixed(0) + " Cº";
+        desc.innerHTML = descValue;
+        /*
+        if(descValue == "scattered clouds"){
+            let descValue = "Nubes dispersas";
+        };*/
+
+        //(descValue.replace('scattered clouds', 'Nubes dispersas')) && (descValue.replace('few clouds', 'pocas nubes')) ;
         humidity.innerHTML = "La humedad es de " + humidityValue + "%";
         
         let iconWeather = document.createElement('div');
-        iconWeather.innerHTML = `<img class="icon__weather" src="https://openweathermap.org/img/wn/${iconValue}@2x.png" alt="">`;
+        iconWeather.innerHTML = `<img class="icon__weather result" src="https://openweathermap.org/img/wn/${iconValue}@2x.png" alt="">`;
         console.log(iconValue);
 
 
         icon.appendChild(iconWeather);
-        console.log(iconWeather);
+    
         
 
     })
