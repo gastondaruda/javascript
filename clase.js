@@ -28,6 +28,7 @@ let juegos = [
 ];
 
 
+
 const saveLocal = (clave, valor) => localStorage.setItem(clave, JSON.stringify(valor)); 
 const readLocal = (clave) => JSON.parse(localStorage.getItem(clave));
 
@@ -88,7 +89,7 @@ class Tienda{
     constructor(){
         this.stock = [];
         this.carrito = [];
-        this.juegoRepetido = [];
+        
 
     }
     addProducto(producto){
@@ -99,14 +100,15 @@ class Tienda{
     }
     addToCart(id){
         let existe = this.carrito.findIndex(producto => producto.id == id);
-        console.log(existe);
+        //console.log(existe);
 
         if(existe == -1){
             let prodInsertar = this.stock.find(producto => producto.id == id);
                 prodInsertar.cantidad = 1;
             this.carrito.push(prodInsertar);
         }else{
-            
+            //this.carrito.cantidad + this.carrito.repetido 
+            //this.carrito.push(this.stock.find(producto => producto.id == id));
             this.carrito[existe].cantidad ++;
             }
     }
@@ -123,14 +125,15 @@ class Tienda{
         document.getElementById(destino).innerHTML = this.stock.map(item => item.productCard()).join("");
     }
     renderCarrito(destino){
-        document.getElementById(destino).innerHTML = this.carrito.map(item => item.shopCard()).join("");
-    }
-    calcularTotal(){
-        return this.carrito.reduce((acumulador, actual) => acumulador + (actual.price * actual.cantidad), 0 );
-    }
-    
-};
+            document.getElementById(destino).innerHTML = this.carrito.map(item => item.shopCard()).join("");        
+        }
+        calcularTotal(){
+            return this.carrito.reduce((acumulador, actual) => acumulador + (actual.price * actual.cantidad), 0 );
+        }
+    };
 
+
+//renderCantidadIcon("cart__cantidad");
 
 //
 /*
@@ -158,7 +161,7 @@ function buscarJuego(){
     $('.result').hide(); //al realizar una segunda busqueda me juntaba ambas busquedas. Intente con un ReplaceChild pero se me complico.
     let stringSearch = document.getElementById("inputSearch").value;
     let juegoFilter = juegos.filter(juego => juego.nombre.includes(stringSearch));
-    console.log(juegoFilter);
+    //console.log(juegoFilter);
 
     /*if(div == true){
         replaceChild( a , b)
@@ -206,22 +209,32 @@ localGasty.renderTienda("container");
 function comprar(id){
     
     localGasty.addToCart(id);
-    console.log(localGasty);
+    //console.log(localGasty);
     localGasty.renderCarrito("shop-container");
     updatePrecioTotal();
+    $(".contenedorProductoAgregado").fadeIn().css("display", "flex");
+    //function setTimeOut
+    ocutarProductoAgregado();
+        
+    ocutarProductoAgregado();
     
-    
+
 };
 
 //---------------------
-
+//let productoAgregado = document.querySelector(".contenedorProductoAgregado");
+function ocutarProductoAgregado(){
+    setTimeout(() => {
+        $(".contenedorProductoAgregado").fadeOut().css("display", "none");
+    }, 3000);
+}
 
 //----------------------------------------------------------------------
 
 function deleteItem(id) {
     
         localGasty.removeToCart(id);
-        console.log(localGasty);   
+        //console.log(localGasty);   
         localGasty.renderCarrito("shop-container");
         updatePrecioTotal();
 }
@@ -309,6 +322,7 @@ const expiracionMes = document.querySelector("#expiracion .mes");
 const expiracionYear = document.querySelector("#expiracion .year");
 const ccv = document.querySelector("#tarjeta .ccv");
 const bancoBg = document.getElementById("bancoBg");
+const btnEnviar = document.getElementById("confirmarCompra");
 
 //-----------------
 tarjeta.addEventListener("click" , () => {
@@ -430,3 +444,26 @@ formulario.inputCCV.addEventListener("keyup" , ()=> {
 
     ccv.textContent = formulario.inputCCV.value;
 })
+
+
+//-------
+
+
+document.getElementById("formulario-tarjeta").addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("Gracias por tu compra");
+});
+
+
+
+
+/*
+function confirm(e){
+    e.preventDefault();
+    alert("Compra confirmada")
+}
+*/
+
+/*transactionForm.addEventListener("submit", function() {
+
+        });*/ 

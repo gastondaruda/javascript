@@ -24,7 +24,7 @@
         <div class="cart-div">
             <a href="#shop-container">
             <i class='bx bx-cart' id="cart">
-                <!--<input type="number" class="cart-icon"></input>-->
+                <p id="cart__cantidad">1</p>
             </i></a>
         </div>
         <h3 class="nav__item">Nuestros juegos</h3>
@@ -85,6 +85,12 @@
 </div>
 
 
+<div class="productoAgregado">
+    <div class="contenedorProductoAgregado">
+        <p class="">Su producto fue agregado correctamente</p>
+    </div>
+</div>
+
 
 
 <!-----------------CREDIT--CARD--------------------------------------------------------->
@@ -144,25 +150,27 @@
     <form action="" id="formulario-tarjeta" class="formulario-tarjeta">
         <div class="grupo">
             <label for="inputNumero">Número Tarjeta</label>
-            <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
+            <input type="text" id="inputNumero" maxlength="19" autocomplete="off" required>
         </div>
+
         <div class="grupo">
             <label for="inputNombre">Nombre</label>
-            <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
+            <input type="text" id="inputNombre" maxlength="19" autocomplete="off" required>
         </div>
+
         <div class="flexbox">
             <div class="grupo expira">
-                <label for="selectMes">Expiracion</label>
+                <label for="selectMes" required>Expiracion</label>
                 <div class="flexbox">
                     <div class="grupo-select">
-                        <select name="mes" id="selectMes">
-                            <option disabled selected>Mes</option>
+                        <select name="mes" id="selectMes" required>
+                            <option disabled selected value="" >Mes</option>
                         </select>
                         <i class="fas fa-angle-down"></i>
                     </div>
                     <div class="grupo-select">
-                        <select name="year" id="selectYear">
-                            <option disabled selected>Año</option>
+                        <select name="year" id="selectYear" required>
+                            <option disabled selected value="" >Año</option>
                         </select>
                         <i class="fas fa-angle-down"></i>
                     </div>
@@ -171,10 +179,12 @@
 
             <div class="grupo ccv">
                 <label for="inputCCV">CCV</label>
-                <input type="text" id="inputCCV" maxlength="3">
+                <input type="text" id="inputCCV" maxlength="3" required>
             </div>
         </div>
-        <button type="submit" class="btn-enviar">Confirmar compra</button>
+        
+
+        <input type="submit" id="confirmarCompra" value="Confirmar">
     </form>
     
 </div>
@@ -225,7 +235,7 @@
     
     <script src="clase.js"></script>
     <script src="games.js"></script>
-    <script src="googleMap.js"></script>
+    
     <script src="weatherApi.js"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
     
