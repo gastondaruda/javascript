@@ -452,6 +452,7 @@ formulario.inputCCV.addEventListener("keyup" , ()=> {
 document.getElementById("formulario-tarjeta").addEventListener("submit", function(event) {
     event.preventDefault();
     alert("Gracias por tu compra");
+    location.reload();
 });
 
 
